@@ -3,26 +3,26 @@ import { useGSAP } from "@gsap/react";
 
 const Outro = () => {
 	useGSAP(() => {
-		gsap.set(".final-message", { marginTop: "-100vh", opacity: 0 });
+		gsap.set(".final-message", { marginTop: "-100vh", opacity: 0 }); // Initial state
 
 		const tl = gsap.timeline({
 			scrollTrigger: {
-				trigger: ".final-message",
-				start: "top 30%",
-				end: "top 10%",
-				scrub: true,
+				trigger: ".final-message", // Section to trigger the animation
+				start: "top 30%", // When the top of the section hits 30% of the viewport height
+				end: "top 10%", // When the top of the section hits 10% of the viewport height
+				scrub: true, // Smooth scrubbing, takes 1 second to "catch up" to the scrollbar
 			},
 		});
 
 		tl.to(".final-content", {
-			opacity: 0,
-			duration: 1,
+			opacity: 0, // Fade out the content
+			duration: 1, // Duration of the fade-out animation
 			ease: "power1.inOut",
 		});
 
 		tl.to(".final-message", {
-			opacity: 1,
-			duration: 1,
+			opacity: 1, // Fade in the section
+			duration: 1, // Duration of the fade-in animation
 			ease: "power1.inOut",
 		});
 	});

@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { useRef } from "react";
 
 const PostCard = () => {
-	const videoRef = useRef(null);
+	const videoRef = useRef(null); // Reference to the video element
 
 	useGSAP(() => {
 		const tl = gsap.timeline({
@@ -15,12 +15,13 @@ const PostCard = () => {
 			},
 		});
 
+		// Animate the video playback based on scroll position
 		videoRef.current.onloadedmetadata = () => {
 			tl.to(
-				videoRef.current,
+				videoRef.current, // Target the video element
 				{
-					currentTime: videoRef.current.duration,
-					duration: 3,
+					currentTime: videoRef.current.duration, // Animate to the end of the video
+					duration: 3, // Duration of the video playback animation
 					ease: "power1.inOut",
 				},
 				"<",

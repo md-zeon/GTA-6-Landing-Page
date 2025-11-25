@@ -4,22 +4,21 @@ import ComingSoon from "./ComingSoon";
 import { useMaskSettings } from "../../constants";
 
 const Hero = () => {
-	const { initialMaskPos, initialMaskSize, maskPos, maskSize } =
-		useMaskSettings();
+	const { initialMaskPos, initialMaskSize, maskSize } = useMaskSettings();
 
 	useGSAP(() => {
 		gsap.set(".mask-wrapper", {
-			maskPosition: initialMaskPos,
-			maskSize: initialMaskSize,
+			maskPosition: initialMaskPos, // Initial mask position
+			maskSize: initialMaskSize, // Initial mask size
 		});
 
 		gsap.set(".mask-logo", {
-			marginTop: "-100vh",
-			opacity: 0,
+			marginTop: "-100vh", // Start above the viewport
+			opacity: 0, // Initially hidden
 		});
 
 		gsap.set(".entrance-message", {
-			marginTop: "0vh",
+			marginTop: "0vh", // Start in the viewport
 		});
 
 		const tl = gsap.timeline({
@@ -33,11 +32,12 @@ const Hero = () => {
 		});
 
 		tl.to(".fade-out", {
+			// Fade out elements with the "fade-out" class
 			opacity: 0,
 			ease: "power1.inOut",
 		})
 			.to(".scale-out", {
-				scale: 1,
+				scale: 1, // Scale to original size
 				ease: "power1.inOut",
 			})
 			.to(
@@ -49,19 +49,19 @@ const Hero = () => {
 				"<", // Sync with previous animation
 			)
 			.to(".mask-wrapper", {
-				opacity: 0,
+				opacity: 0, // Fade out the mask wrapper
 			})
 			.to(
 				".overlay-logo",
 				{
-					opacity: 1,
+					opacity: 1, // Fade in the overlay logo
 					onComplete: () => {
 						gsap.to(".overlay-logo", {
 							opacity: 0,
 						});
 					},
 				},
-				"<",
+				"<", // Sync with previous animation
 			)
 			.to(
 				".entrance-message",
@@ -71,7 +71,7 @@ const Hero = () => {
 					maskImage:
 						"radial-gradient(circle at 50% 0vh, black 50%, transparent 100%)",
 				},
-				"<",
+				"<", // Sync with previous animation
 			);
 	});
 	return (
