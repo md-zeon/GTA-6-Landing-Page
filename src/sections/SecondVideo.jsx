@@ -3,7 +3,7 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
 const SecondVideo = () => {
-	const videoRef = useRef();
+	const videoRef = useRef(null);
 	useGSAP(() => {
 		gsap.set(".lucia", { marginTop: "-60vh", opacity: 0 });
 		const tl = gsap.timeline({
@@ -29,7 +29,7 @@ const SecondVideo = () => {
 				"<",
 			);
 		};
-	});
+	}, []);
 	return (
 		<section className='lucia'>
 			<div className='h-dvh'>
