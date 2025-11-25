@@ -1,5 +1,5 @@
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Lucia = () => {
 	useGSAP(() => {
@@ -14,7 +14,7 @@ const Lucia = () => {
 					scrub: 2, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
 				},
 			})
-			.to(".second-vd", { opacity: 0, duration: 2, ease: "power1.inOut" }); // Fade out the second video
+			.to(".second-vd", { opacity: 0, duration: 1, ease: "power1.inOut" }); // Fade out the second video
 
 		gsap.to(
 			".lucia-life .img-box", // Target the image box within the lucia-life section
